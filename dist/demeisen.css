@@ -1,4 +1,4 @@
-/* Demeisen UI v1.0.2 — shared look for Demeisen apps (CRM, intranet, …).
+/* Demeisen UI v1.1.0 — shared look for Demeisen apps (CRM, intranet, …).
    Plain CSS, no build step. Copy dist/ into your app and link this file.
    Rebrand: override the variables in "Brand" below and swap assets/logo-mark.png. */
 
@@ -87,6 +87,27 @@ nav.tabs a[aria-current="page"] { background: var(--accent-soft); color: var(--a
 .apps a { padding: 4px 10px; border-radius: 4px; font-weight: 500; }
 .apps a[aria-current="true"] { background: var(--accent-soft); color: var(--accent); }
 @media (max-width: 900px) { header.top { position: static; } header.top .wrap { gap: 8px; } nav.tabs a { padding: 6px 10px; } }
+
+/* ---------- Demeisen bar: identical across all apps, above each app's own header ----------
+   <div class="appbar"><div class="wrap">
+     <a class="brand" href="/"><i class="brand-mark"></i>Demeisen</a>
+     <nav class="appbar-apps"><a href="…" aria-current="true">Intranet</a><a href="…">Investor CRM</a></nav>
+     <div class="appbar-user"><span>Jane Doe</span><a href="…">Sign out</a></div>
+   </div></div>
+   Then the app's header uses <header class="top appnav"> (no brand) for its own menu. */
+.appbar { background: var(--surface); border-bottom: 1px solid var(--line); }
+.appbar .wrap { display: flex; align-items: center; gap: 20px; min-height: 48px; flex-wrap: wrap; padding-block: 6px; }
+.appbar .brand { font-size: 18px; }
+.appbar-apps { display: flex; gap: 2px; align-self: stretch; }
+.appbar-apps a { display: flex; align-items: center; padding: 0 12px; color: var(--muted); text-decoration: none; font-weight: 500;
+  border-bottom: 2px solid transparent; margin-bottom: -7px; padding-bottom: 5px; }
+.appbar-apps a:hover { color: var(--ink); }
+.appbar-apps a[aria-current="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.appbar-user { display: flex; align-items: center; gap: 12px; margin-left: auto; font-size: 13px; color: var(--muted); }
+.appbar-user a, .appbar-user button { color: var(--muted); text-decoration: none; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; }
+.appbar-user a:hover, .appbar-user button:hover { color: var(--ink); }
+header.top.appnav { position: static; }
+header.top.appnav .wrap { padding-block: 6px; }
 
 /* ---------- Page ---------- */
 main .wrap { padding-block: 24px 72px; }
