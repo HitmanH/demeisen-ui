@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demeisen UI example</title>
+<link rel="icon" href="../dist/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<link rel="stylesheet" href="../dist/demeisen.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#"><i class="brand-mark" aria-hidden="true"></i>Demeisen <span>Intranet</span></a>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#" aria-current="page">Home</a><a href="#">NDAs</a><a href="#">Memos</a>
+  </nav>
+  <div class="top-right">
+    <nav class="apps" aria-label="Apps"><a href="#" aria-current="true">Intranet</a><a href="#">CRM</a></nav>
+    <span>Jane Doe</span><a href="#">Sign out</a>
+  </div>
+</div></header>
+<main><div class="wrap stack">
+  <div class="pagehead"><div><h1>Example page</h1><p class="sub">Every component in demeisen.css.</p></div>
+    <button class="btn">Primary</button></div>
+  <div class="flash">Saved.</div><div class="flash error">Something went wrong.</div>
+  <div class="tiles"><a class="tile" href="#"><b>Tile</b><span>Description</span></a><a class="tile" href="#"><span class="n">12</span><span>Open items</span></a></div>
+  <section class="panel pad"><h2>Form</h2>
+    <div class="fgrid"><label class="field"><span class="lbl">Name</span><input type="text"></label>
+      <label class="field"><span class="lbl">Type</span><select><option>One</option></select></label>
+      <label class="field span-all"><span class="lbl">Notes <em>(optional)</em></span><textarea></textarea></label></div>
+    <div class="form-actions" style="margin-top:14px"><button class="btn">Save</button><button class="btn ghost">Cancel</button></div></section>
+  <section class="panel tbl-wrap"><table><thead><tr><th>Ref</th><th>Status</th><th class="num">Amount</th></tr></thead>
+    <tbody><tr><td class="mono">NDA-0001</td><td><span class="pill done">Approved</span></td><td class="num">5,000</td></tr>
+    <tr><td class="mono">NDA-0002</td><td><span class="pill warn">Awaiting</span></td><td class="num">250</td></tr></tbody></table></section>
+</div></main>
+</body></html>

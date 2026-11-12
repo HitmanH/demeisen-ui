@@ -1,0 +1,159 @@
+/* Demeisen UI v1.0.0 — shared look for Demeisen apps (CRM, intranet, …).
+   Plain CSS, no build step. Copy dist/ into your app and link this file.
+   Rebrand: override the variables in "Brand" below and swap assets/logo-mark.png. */
+
+/* ---------- Brand (override these to rebrand) ---------- */
+:root {
+  --brand-name: "Demeisen";
+  --brand-logo: url("assets/logo-mark.png");
+}
+
+/* ---------- Tokens ---------- */
+:root {
+  --bg: #F3F5F8;
+  --surface: #FFFFFF;
+  --ink: #18212E;
+  --muted: #5B6676;
+  --line: #DCE1E8;
+  --hover: #F7F9FB;
+  --accent: #1E4D8C;
+  --accent-soft: #E3ECF8;
+  --on-accent: #FFFFFF;
+  --ci: #22706C;
+  --ci-soft: #DDF0EE;
+  --dem: #4A4F8C;
+  --dem-soft: #E8E9F6;
+  --intel: #8A5A12;
+  --intel-soft: #F6ECDB;
+  --ok: #2F7A4F;
+  --ok-soft: #E0F1E7;
+  --warn: #9A6200;
+  --warn-soft: #FBF0D9;
+  --crit: #B3261E;
+  --crit-soft: #FBE4E2;
+  --mark: #FFE7A3;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --f-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --r: 6px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F141B; --surface: #171E28; --ink: #E6EAF0; --muted: #97A3B4; --line: #2A3442; --hover: #1C2531;
+    --accent: #86ADE8; --accent-soft: #1D2B40; --on-accent: #0F141B;
+    --ci: #6FC7C1; --ci-soft: #14302E; --dem: #A9ADE8; --dem-soft: #24264A;
+    --intel: #DDB06A; --intel-soft: #2E2618; --ok: #6CC08F; --ok-soft: #17291F;
+    --warn: #E2A93B; --warn-soft: #2E2410; --crit: #F08A82; --crit-soft: #34191A; --mark: #5A4A16;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F141B; --surface: #171E28; --ink: #E6EAF0; --muted: #97A3B4; --line: #2A3442; --hover: #1C2531;
+  --accent: #86ADE8; --accent-soft: #1D2B40; --on-accent: #0F141B;
+  --ci: #6FC7C1; --ci-soft: #14302E; --dem: #A9ADE8; --dem-soft: #24264A;
+  --intel: #DDB06A; --intel-soft: #2E2618; --ok: #6CC08F; --ok-soft: #17291F;
+  --warn: #E2A93B; --warn-soft: #2E2410; --crit: #F08A82; --crit-soft: #34191A; --mark: #5A4A16;
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 14px; line-height: 1.5; }
+a { color: var(--accent); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.muted { color: var(--muted); }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- Header ---------- */
+header.top { position: sticky; top: 0; z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 10px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none;
+  font-family: var(--f-display); font-size: 20px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+.brand-mark { width: 28px; height: 28px; flex: none; background: currentColor;
+  -webkit-mask: var(--brand-logo) center / contain no-repeat; mask: var(--brand-logo) center / contain no-repeat; }
+.brand span { font-family: var(--f-body); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+nav.tabs { display: flex; flex-wrap: wrap; gap: 2px; flex: 1; min-width: 0; }
+nav.tabs a { padding: 8px 9px; border-radius: var(--r); color: var(--muted); text-decoration: none; font-weight: 500; white-space: nowrap; }
+nav.tabs a:hover { color: var(--ink); background: var(--hover); }
+nav.tabs a[aria-current="page"] { background: var(--accent-soft); color: var(--accent); }
+/* App switcher + user area on the right of the header */
+.top-right { display: flex; align-items: center; gap: 12px; margin-left: auto; font-size: 13px; color: var(--muted); }
+.top-right a { color: var(--muted); text-decoration: none; }
+.top-right a:hover { color: var(--ink); }
+.apps { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: var(--r); }
+.apps a { padding: 4px 10px; border-radius: 4px; font-weight: 500; }
+.apps a[aria-current="true"] { background: var(--accent-soft); color: var(--accent); }
+@media (max-width: 900px) { header.top { position: static; } header.top .wrap { gap: 8px; } nav.tabs a { padding: 6px 10px; } }
+
+/* ---------- Page ---------- */
+main .wrap { padding-block: 24px 72px; }
+h1 { font-family: var(--f-display); font-size: 26px; font-weight: 600; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h2 { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; display: flex; gap: 8px; align-items: baseline; }
+h3 { font-size: 15px; font-weight: 600; margin: 0 0 8px; }
+.pagehead { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+.sub { color: var(--muted); margin: 4px 0 0; max-width: 65ch; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.panel.pad { padding: 16px 18px; }
+.stack { display: flex; flex-direction: column; gap: 20px; }
+.narrow { max-width: 400px; margin: 64px auto; }
+
+/* ---------- Controls ---------- */
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: var(--r); border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); font-weight: 500; cursor: pointer; white-space: nowrap; text-decoration: none; }
+.btn:hover { filter: brightness(1.08); }
+.btn.ghost { background: transparent; color: var(--accent); border-color: var(--line); }
+.btn.ghost:hover { background: var(--hover); filter: none; }
+.btn.danger { background: var(--crit); border-color: var(--crit); color: #fff; }
+.btn.sm { padding: 5px 10px; font-size: 13px; }
+.linkbtn { background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="date"], input[type="tel"], input[type="file"], select, textarea {
+  width: 100%; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface);
+}
+textarea { resize: vertical; min-height: 84px; line-height: 1.5; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent); }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.lbl { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+.lbl em { font-style: normal; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.fgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.span-all { grid-column: 1 / -1; }
+.form-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.form-error { color: var(--crit); font-weight: 500; }
+
+/* ---------- Pills ---------- */
+.pill { display: inline-flex; align-items: center; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 500; white-space: nowrap; line-height: 1.6; }
+.pill.inv { background: var(--accent-soft); color: var(--accent); }
+.pill.ci { background: var(--ci-soft); color: var(--ci); }
+.pill.dem { background: var(--dem-soft); color: var(--dem); }
+.pill.intel { background: var(--intel-soft); color: var(--intel); }
+.pill.done, .pill.ok { background: var(--ok-soft); color: var(--ok); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.crit { background: var(--crit-soft); color: var(--crit); }
+.pill.open, .pill.oth { background: var(--hover); color: var(--muted); border: 1px solid var(--line); }
+
+/* ---------- Tiles ---------- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.tile { padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.tile:hover { background: var(--hover); }
+.tile b { font-weight: 600; }
+.tile span { color: var(--muted); font-size: 13px; }
+.tile .n { font-size: 28px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.1; }
+
+/* ---------- Tables ---------- */
+.tbl-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th { text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding: 10px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; }
+
+/* ---------- Messages ---------- */
+.flash { padding: 10px 14px; border-radius: var(--r); margin-bottom: 16px; background: var(--ok-soft); color: var(--ok); font-weight: 500; }
+.flash.error { background: var(--crit-soft); color: var(--crit); }
+.flash.warn { background: var(--warn-soft); color: var(--warn); }
+.empty { padding: 16px 14px; color: var(--muted); }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%) translateY(20px); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: var(--r); font-weight: 500; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 20; max-width: calc(100vw - 32px); }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media print { header.top, .no-print { display: none !important; } body { background: #fff; } }
