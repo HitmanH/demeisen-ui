@@ -1,4 +1,4 @@
-/* Demeisen UI v1.0.0 — shared look for Demeisen apps (CRM, intranet, …).
+/* Demeisen UI v1.0.1 — shared look for Demeisen apps (CRM, intranet, …).
    Plain CSS, no build step. Copy dist/ into your app and link this file.
    Rebrand: override the variables in "Brand" below and swap assets/logo-mark.png. */
 
@@ -108,7 +108,7 @@ h3 { font-size: 15px; font-weight: 600; margin: 0 0 8px; }
 .btn.danger { background: var(--crit); border-color: var(--crit); color: #fff; }
 .btn.sm { padding: 5px 10px; font-size: 13px; }
 .linkbtn { background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
-input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="date"], input[type="tel"], input[type="file"], select, textarea {
+input:not([type]), input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="date"], input[type="tel"], input[type="file"], select, textarea {
   width: 100%; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface);
 }
 textarea { resize: vertical; min-height: 84px; line-height: 1.5; }
