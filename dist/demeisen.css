@@ -1,4 +1,4 @@
-/* Demeisen UI v1.0.1 — shared look for Demeisen apps (CRM, intranet, …).
+/* Demeisen UI v1.0.2 — shared look for Demeisen apps (CRM, intranet, …).
    Plain CSS, no build step. Copy dist/ into your app and link this file.
    Rebrand: override the variables in "Brand" below and swap assets/logo-mark.png. */
 
@@ -137,8 +137,10 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); ou
 .tile { padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
 .tile:hover { background: var(--hover); }
 .tile b { font-weight: 600; }
-.tile span { color: var(--muted); font-size: 13px; }
+.tile b + span { color: var(--muted); font-size: 13px; }
 .tile .n { font-size: 28px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.tile.crit .n { color: var(--crit); }
+.tile.warn .n { color: var(--warn); }
 
 /* ---------- Tables ---------- */
 .tbl-wrap { overflow-x: auto; }
