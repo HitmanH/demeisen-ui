@@ -10,7 +10,7 @@ single-page app and in server-rendered pages alike. Light and dark mode follow t
 - `dist/demeisen.css`: the stylesheet.
 - `dist/assets/logo-mark.png`: the logo mark (transparent; drawn in the text colour so it suits both themes).
 - `dist/assets/favicon.png`: browser tab icon.
-- `examples/index.html`: every component on one page. Open it in a browser.
+- `examples/index.html`: every component on one page. Serve the repo folder (e.g. `python3 -m http.server`) and open it; browsers block the logo mask on `file://` pages.
 - `vendor.sh`: copies a tagged version into an app.
 
 ## Using it in an app
@@ -20,6 +20,8 @@ Each app keeps its **own copy of a fixed version**, so it never depends on this 
 ```
 ./vendor.sh v1.0.0 ../my-app/static/ui
 ```
+
+(Any git ref works: a tag, branch or commit.)
 
 Then in the page:
 
